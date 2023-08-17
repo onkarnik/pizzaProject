@@ -48,9 +48,9 @@ function PizzaRender({ pizza }) {
           </div>
           <div>
             <select onChange={(val) => setVarient(val.target.value)}>
-              {pizza.varients.map((e) => {
-                return <option value={e}>{e}</option>;
-              })}
+              <option value="small">small</option>
+              <option value="medium">medium</option>
+              <option value="large">large</option>
             </select>
           </div>
         </div>
