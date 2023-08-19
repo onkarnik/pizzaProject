@@ -22,4 +22,7 @@ public class CartItemDTO {
 	private int quantity;
 	@Min(1)
 	private double price;
+	
+	@NotNull
+	private String userName;
 }

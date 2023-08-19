@@ -1,5 +1,8 @@
 package com.app.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -26,17 +29,35 @@ public class CartItemServiceImpl implements CartItemService {
 	private ModelMapper mapper;
 	
 	@Override
-	public CartItem addCartItem(String userId, CartItemDTO cartItemDto) {
+	public CartItem addCartItem(CartItemDTO cartItemDto) {
 		
 		CartItem cartItem = mapper.map(cartItemDto, CartItem.class);
 		
-		System.out.println("in addToCart CartItemDTO service :"+cartItem);
-		User user = userRepo.findById(userId).orElseThrow();
+		User user = userRepo.findById(cartItemDto.getUserName()).orElseThrow();
 		
 		cartItem.setUser(user);
 		
 		 return cartItemRepo.save(cartItem);
 
+	}
+
+	@Override
+	public List<CartItemDTO> getAllCartItems(String userId) {
+		
+		User user = userRepo.findById(userId).orElseThrow();
+		
+		List<CartItem> cartItems = cartItemRepo.findByUser(user);
+		
+		List<CartItemDTO> cartItemsDto = new ArrayList<CartItemDTO>();
+		
+		
+		cartItems.forEach((item)->{
+			cartItemsDto.add(mapper.map(item, CartItemDTO.class));
+		});
+		
+		cartItemsDto.forEach((item)->item.setUserName(userId));
+		
+		return cartItemsDto;
 	}
 
 }

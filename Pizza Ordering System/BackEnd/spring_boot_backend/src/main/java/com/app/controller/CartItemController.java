@@ -1,7 +1,12 @@
 package com.app.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,10 +23,17 @@ public class CartItemController {
 	private CartItemService cartService;
 	
 	@PreAuthorize("hasRole('user')")
-	@PostMapping("addToCart/{userId}")
-	public CartItem addToCart(@PathVariable String userId,@RequestBody CartItemDTO cartItemDto) {
+	@GetMapping("/cartItems/{userId}")
+	public List<CartItemDTO> getAllCartItems(@PathVariable @Valid String userId ){
+	
+		return cartService.getAllCartItems(userId);
+	}
+	
+	@PreAuthorize("hasRole('user')")
+	@PostMapping("addToCart")
+	public CartItem addToCart(@RequestBody @Valid CartItemDTO cartItemDto) {
 		
 		System.out.println("In cartItem controller : "+cartItemDto);
-		return cartService.addCartItem(userId, cartItemDto);
+		return cartService.addCartItem(cartItemDto);
 	}
 }
