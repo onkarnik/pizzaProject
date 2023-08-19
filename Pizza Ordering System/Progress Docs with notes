@@ -1,17 +1,46 @@
 class name 	= 	table name 
 class instace 	=	row
-
-
 403 == unauthorized
 
----------------------------------------
+---------------------------------------------------------
 19/08/23
 
-completed work				
---------------
-- JWT auth
-- register user
-- pizza crud with role based auth
+***********completed work***********				
+----------------------------------------------------------
+* JWT auth
+
+	api(Post)=	http://127.0.0.1:7070/authenticate
+	object   =
+			{
+    			"userName" : "onkar123",
+    			"userPassword": "onkar@123"
+			}
+---------------------------------------------------------				
+* register user
+
+---------------------------------------------------------
+
+* pizza crud with role based auth
+
+---------------------------------------------------------
+
+* add items to cart
+	api(Post)= 	http://127.0.0.1:7070/addToCart
+	object 	=	
+			{
+    			"name" : "indi chicken",
+    			"quantity":2,
+    			"price":399,
+    			"userName":"onkar123"
+			}	
+---------------------------------------------------------
+
+* get all items in a cart by userName
+
+	api(get)=	http://127.0.0.1:7070/cartItems/{userName}
+	return type = 	`List` of items in a cart for user
+	
+---------------------------------------------------------
 
 Remaining work
 ---------------

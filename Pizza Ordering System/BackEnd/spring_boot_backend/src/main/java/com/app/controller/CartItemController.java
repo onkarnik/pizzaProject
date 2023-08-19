@@ -26,6 +26,8 @@ public class CartItemController {
 	@GetMapping("/cartItems/{userId}")
 	public List<CartItemDTO> getAllCartItems(@PathVariable @Valid String userId ){
 	
+		//http://127.0.0.1:7070/cartItems/onkar123
+		
 		return cartService.getAllCartItems(userId);
 	}
 	
@@ -33,7 +35,8 @@ public class CartItemController {
 	@PostMapping("addToCart")
 	public CartItem addToCart(@RequestBody @Valid CartItemDTO cartItemDto) {
 		
-		System.out.println("In cartItem controller : "+cartItemDto);
+		http://127.0.0.1:7070/addToCart
+		
 		return cartService.addCartItem(cartItemDto);
 	}
 }
