@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring_boot_backend_template</artifactId>
+	<artifactId>Pizza_Ordering_System</artifactId>
 	<version>0.0.1</version>
-	<name>spring_boot_backend_template</name>
-	<description>Template Project for Spring Boot based Backend </description>
+	<name>Pizza_Ordering_System</name>
+	<description>Pizza ordering system backend</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
+			<version>1.7.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 		<dependency>
@@ -64,6 +64,40 @@
 			<artifactId>modelmapper</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
+	<!-- 	<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+
+		https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-impl
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency>
+
+ -->
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
+		<!-- <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+			<scope>runtime</scope>
+		</dependency> -->
+
 	</dependencies>
 
 	<build>

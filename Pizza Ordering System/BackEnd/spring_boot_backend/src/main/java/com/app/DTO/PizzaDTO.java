@@ -35,5 +35,4 @@ public class PizzaDTO {
 	@NotBlank
     private String description;
 
-    // Constructors, getters, setters
 }

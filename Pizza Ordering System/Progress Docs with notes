@@ -1,0 +1,22 @@
+class name 	= 	table name 
+class instace 	=	row
+
+
+403 == unauthorized
+
+---------------------------------------
+19/08/23
+
+completed work				
+--------------
+- JWT auth
+- register user
+- pizza crud with role based auth
+
+Remaining work
+---------------
+- File handling (Image handling)
+- Orders
+- Cart
+
+---------------------------------------

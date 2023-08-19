@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +36,15 @@ public class PizzaController
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasRole('admin')")
 	public Pizza addPizza(@RequestBody @Valid PizzaDTO addPizza)
 	{
 		System.out.println(addPizza);
 		return pizzaService.addPizza(addPizza);
 	}
 	
-	@DeleteMapping("/pizza/{pizzaId}")
+	@DeleteMapping("/{pizzaId}")
+	@PreAuthorize("hasRole('admin')")
 	public Pizza deletePizza(@PathVariable Long pizzaId)
 	{
 		return pizzaService.deletePizza(pizzaId);

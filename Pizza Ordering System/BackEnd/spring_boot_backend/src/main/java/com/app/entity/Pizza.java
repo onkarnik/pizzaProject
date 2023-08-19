@@ -34,9 +34,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Pizza extends BaseEntity {
 	
-    @Column(length = 30)
+    @Column(length = 30, unique = true)
     private String name;
-
+    
+    
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "pizza_price", joinColumns = @JoinColumn(name = "pizza_id"))
     private List<Price> prices = new ArrayList<Price>(); // If using the embeddable class
