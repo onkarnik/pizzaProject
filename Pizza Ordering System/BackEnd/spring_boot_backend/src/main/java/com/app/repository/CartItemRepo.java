@@ -10,4 +10,6 @@ import com.app.entity.User;
 public interface CartItemRepo extends JpaRepository<CartItem, Long>{
 	
 	List<CartItem> findByUser(User user);
+	
+	CartItem findByName(String name);
 }

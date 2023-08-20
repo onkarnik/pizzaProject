@@ -7,6 +7,7 @@ class instace 	=	row
 
 ***********completed work***********				
 ----------------------------------------------------------
+->>ADMIN/USER FUNCTIONALITY
 * JWT auth
 
 	api(Post)=	http://127.0.0.1:7070/authenticate
@@ -15,15 +16,16 @@ class instace 	=	row
     			"userName" : "onkar123",
     			"userPassword": "onkar@123"
 			}
----------------------------------------------------------				
+---------------------------------------------------------
+->>ADMIN/USER FUNCTIONALITY				
 * register user
 
 ---------------------------------------------------------
-
+->>ADMIN FUNCTIONALITY
 * pizza crud with role based auth
 
 ---------------------------------------------------------
-
+->>USER FUNCTIONALITY
 * add items to cart
 	api(Post)= 	http://127.0.0.1:7070/addToCart
 	object 	=	
@@ -34,11 +36,18 @@ class instace 	=	row
     			"userName":"onkar123"
 			}	
 ---------------------------------------------------------
-
+->>USER FUNCTIONALITY
 * get all items in a cart by userName
 
 	api(get)=	http://127.0.0.1:7070/cartItems/{userName}
 	return type = 	`List` of items in a cart for user
+	
+---------------------------------------------------------
+->>USER FUNCTIONALITY
+* delete cart items in a cart by pizzaName
+
+	api(get)=	http://127.0.0.1:7070/deleteItem/{pizza name}
+	return type = 	`String` message
 	
 ---------------------------------------------------------
 

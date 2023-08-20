@@ -9,4 +9,6 @@ public interface CartItemService {
 	CartItem addCartItem(CartItemDTO cartItemDto);
 	
 	List<CartItemDTO> getAllCartItems(String userId);
+	
+	String deleteCartItem(String pizzaName);
 }

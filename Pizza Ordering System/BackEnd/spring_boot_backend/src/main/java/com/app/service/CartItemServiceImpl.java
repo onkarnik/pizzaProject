@@ -60,4 +60,18 @@ public class CartItemServiceImpl implements CartItemService {
 		return cartItemsDto;
 	}
 
+	@Override
+	public String deleteCartItem(String pizzaName) {
+		
+		CartItem cartItem = cartItemRepo.findByName(pizzaName);
+		
+		if(cartItem!=null) {
+			cartItemRepo.delete(cartItem);
+			return "Item deleted :"+pizzaName;
+		}else {
+			return "Item not found :"+pizzaName;
+		}
+			
+	}
+
 }

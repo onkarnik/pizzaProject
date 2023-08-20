@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +36,19 @@ public class CartItemController {
 	@PostMapping("addToCart")
 	public CartItem addToCart(@RequestBody @Valid CartItemDTO cartItemDto) {
 		
-		http://127.0.0.1:7070/addToCart
+		//http://127.0.0.1:7070/addToCart
 		
 		return cartService.addCartItem(cartItemDto);
+	}
+	
+	@PreAuthorize("hasRole('user')")
+	@DeleteMapping("deleteItem/{pizzaName}")
+	public String deleteCartItem(@PathVariable String pizzaName) {
+		
+		if(pizzaName==null) {
+			return "Item name cannot be null";
+		}else {
+			return cartService.deleteCartItem(pizzaName);
+		}
 	}
 }
