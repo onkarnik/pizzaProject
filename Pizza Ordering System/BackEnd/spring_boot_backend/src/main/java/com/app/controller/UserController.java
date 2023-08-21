@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.DTO.AddressDTO;
+import com.app.entity.Address;
 import com.app.entity.User;
 import com.app.service.UserService;
 
@@ -31,19 +33,7 @@ public class UserController {
 		userService.initRolesAndUser();
 	}
 
-	//for person having multiple roles
-	//@PreAuthorize("hasAnyRole('admin','user')")
-	@GetMapping("/forAdmin")
-	@PreAuthorize("hasRole('admin')")
-	public String forAdmin()
-	{
-		return "This URL is only accessible to admin";
-	}
-	
-	@GetMapping("/forUser")
-	@PreAuthorize("hasRole('user')")
-	public String forUser()
-	{
-		return "This URL is only accesible to user";
+	public Address addAddress(@RequestBody @Valid AddressDTO addressDto) {
+		
 	}
 }

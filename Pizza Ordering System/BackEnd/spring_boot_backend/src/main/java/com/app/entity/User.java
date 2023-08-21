@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
@@ -50,4 +51,6 @@ public class User {
 	}
 			)
 	private Set<Role> roles;
+	
+	
 }
