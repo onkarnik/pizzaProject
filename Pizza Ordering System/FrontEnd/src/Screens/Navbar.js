@@ -3,7 +3,7 @@ function Navbar() {
     <>
       <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/" style={{fontSize:"32px"}}>
             ExpressPizza
           </a>
           <div
