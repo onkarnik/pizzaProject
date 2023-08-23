@@ -1,7 +1,7 @@
 const pizzas = [
   {
     name: "Margherita",
-    varients: ["small", "medium", "large"],
+    variants: ["small", "medium", "large"],
     prices: [
       {
         small: 99,
@@ -15,7 +15,7 @@ const pizzas = [
   },
   {
     name: "Farmhouse",
-    varients: ["small", "medium", "large"],
+    variants: ["small", "medium", "large"],
     prices: [
       {
         small: 229,
@@ -30,7 +30,7 @@ const pizzas = [
   },
   {
     name: "Veggie Paradise",
-    varients: ["small", "medium", "large"],
+    variants: ["small", "medium", "large"],
     prices: [
       {
         small: 180,
@@ -45,7 +45,7 @@ const pizzas = [
   },
   {
     name: "Chicken Golden Delight",
-    varients: ["small", "medium", "large"],
+    variants: ["small", "medium", "large"],
     prices: [
       {
         small: 249,
@@ -53,14 +53,14 @@ const pizzas = [
         large: 599,
       },
     ],
-    category: "nonveg",
+    category: "non-veg",
     image: "/Data/pizza.png",
     description:
       "Double pepper barbecue chicken, golden corn and extra cheese, true delight",
   },
   {
     name: "Chicken Pepperoni",
-    varients: ["small", "medium", "large"],
+    variants: ["small", "medium", "large"],
     prices: [
       {
         small: 320,
@@ -68,14 +68,14 @@ const pizzas = [
         large: 800,
       },
     ],
-    category: "nonveg",
+    category: "non-veg",
     image: "/Data/pizza.png",
     description:
       "A classic American taste! Relish the delectable flavor of Chicken Pepperoni, topped with extra cheese",
   },
   {
     name: "Indi Chicken Tikka",
-    varients: ["small", "medium", "large"],
+    variants: ["small", "medium", "large"],
     prices: [
       {
         small: 250,
@@ -83,7 +83,7 @@ const pizzas = [
         large: 500,
       },
     ],
-    category: "nonveg",
+    category: "non-veg",
     image: "/Data/pizza.png",
     description:
       "The wholesome flavour of tandoori masala with Chicken tikka, onion, red paprika & mint mayo",
