@@ -1,25 +1,33 @@
-
 function Navbar() {
   return (
     <>
-    <nav className="navbar navbar-default">
+      <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          {/* Brand and toggle get grouped for better mobile display */}
-          <div className="navbar-header">
-            
-            <h3>ExpressPizza</h3>
-          </div>
-          {/* Collect the nav links, forms, and other content for toggling */}
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li style={{marginLeft:"30px"}}><a href="/">Menu</a></li>
-              <li><a href="/cart" style={{marginLeft:"20px"}}>Your Cart</a></li>
+          <a className="navbar-brand" href="/">
+            ExpressPizza
+          </a>
+          <div
+            style={{
+              display: "flex",
+              marginRight: 50,
+              justifyContent: "space-between",
+            }}
+          >
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/">
+                  Menu
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/cart">
+                  Your cart
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
-
-
     </>
   );
 }
@@ -70,4 +78,4 @@ export default Navbar;
         </div>
       </div>
     </nav> */
-} 
+}

@@ -33,7 +33,7 @@ public class UserController {
 		userService.initRolesAndUser();
 	}
 
-	public Address addAddress(@RequestBody @Valid AddressDTO addressDto) {
-		
-	}
+//	public Address addAddress(@RequestBody @Valid AddressDTO addressDto) {
+//		
+//	}
 }
