@@ -23,20 +23,24 @@ function PizzaRender({ pizza }) {
 
   return (
     <div
-      className="card"
-      style={{
-        display: "inline-block",
-        margin: 25,
+        className="card"
+        style={{
+          display: "inline-block",
+          margin: 25,
+          boxShadow: "2px 2px 4px rgba(0, 0, 0, 1.2)",
+          borderRadius: "10px",
+          
       }}
      >
       <img
         src={pizza.image}
         className="card-img-top"
         alt="..."
-        style={{ height: 200}}
+        style={{ height: 200,borderRadius: "10px"}}
       />
       <div className="card-body">
         <h5 className="card-title" style={{color:"red"}}><strong>{pizza.name}</strong></h5>
+       
         <hr />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "block" }}>
