@@ -1,10 +1,35 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { createUrl, getConfig } from "../utils/utils";
 
 function PizzaRender({ pizza }) {
+<<<<<<< HEAD
   
   var [qty, setQty] = useState(1);
   var [variant, setVariant] = useState("small");
+=======
+
+  var [qty, setQty] = useState(1);
+  var [variant, setvariant] = useState("small");
+>>>>>>> onkar
   var [message, setMessage] = useState("");
+  const jwtToken = sessionStorage.getItem("jwtToken")
+  const config = getConfig(jwtToken)
+  const postData = {
+    "name" : pizza.name,
+    "quantity":qty,
+    "price":pizza.prices[0][variant],
+    "userName":sessionStorage.getItem("userName")
+  }
+  const url = createUrl("/addToCart")
+
+  useEffect(()=>{
+    if(message!=""){
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    }
+  },[message])
 
   var addQty = () => {
     setQty(qty + 1);
@@ -15,10 +40,17 @@ function PizzaRender({ pizza }) {
   };
 
   var addToCart = () => {
-    setMessage("Added to cart");
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
+    
+    axios.post(url,postData,config)
+    .then(res =>{
+      setMessage("Added to cart");
+    })
+    .catch(err=>{
+      console.log(err)
+      setMessage("Oops! Something went Wrong");
+    })
+
+    
   };
 
   return (
@@ -49,7 +81,11 @@ function PizzaRender({ pizza }) {
             <button onClick={addQty}><strong>+</strong></button>
           </div>
           <div>
+<<<<<<< HEAD
             <select onChange={(val) => setVariant(val.target.value)}>
+=======
+            <select onChange={(val) => setvariant(val.target.value)}>
+>>>>>>> onkar
               <option value="small">small</option>
               <option value="medium">medium</option>
               <option value="large">large</option>

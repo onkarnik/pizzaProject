@@ -5,16 +5,23 @@ import { Route, Switch } from "react-router-dom";
 import Cart from "./Cart";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Card from "./Card";
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./Login";
 
 function Controller() {
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn")
+
   return (
     <>
-      <Navbar />
       <BrowserRouter>
+        <Navbar/>
         <Switch>
           <Route exact path="/" component={DashBoard} />
-          <Route exact path="/checkout" component={CheckoutForm} />
-          <Route exact path="/cart" component={Cart} />
+          <ProtectedRoute exact path="/pizza" component={Card} />
+          <ProtectedRoute exact path="/checkout" component={CheckoutForm} />
+          <ProtectedRoute exact path="/cart" component={Cart} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </BrowserRouter>
       <Footer />
