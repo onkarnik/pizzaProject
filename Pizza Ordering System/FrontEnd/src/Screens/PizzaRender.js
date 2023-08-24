@@ -3,15 +3,9 @@ import { useEffect, useState } from "react";
 import { createUrl, getConfig } from "../utils/utils";
 
 function PizzaRender({ pizza }) {
-<<<<<<< HEAD
-  
-  var [qty, setQty] = useState(1);
-  var [variant, setVariant] = useState("small");
-=======
 
   var [qty, setQty] = useState(1);
   var [variant, setvariant] = useState("small");
->>>>>>> onkar
   var [message, setMessage] = useState("");
   const jwtToken = sessionStorage.getItem("jwtToken")
   const config = getConfig(jwtToken)
@@ -81,11 +75,7 @@ function PizzaRender({ pizza }) {
             <button onClick={addQty}><strong>+</strong></button>
           </div>
           <div>
-<<<<<<< HEAD
-            <select onChange={(val) => setVariant(val.target.value)}>
-=======
             <select onChange={(val) => setvariant(val.target.value)}>
->>>>>>> onkar
               <option value="small">small</option>
               <option value="medium">medium</option>
               <option value="large">large</option>
