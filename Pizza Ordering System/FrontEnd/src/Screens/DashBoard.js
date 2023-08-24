@@ -8,7 +8,7 @@ function DashBoard() {
     <>
       <div className="container">
         <center>
-          <Card />
+         <h1>HomePage</h1>
         </center>
       </div>
     </>

@@ -1,9 +1,29 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { createUrl, getConfig } from "../utils/utils";
 
 function PizzaRender({ pizza }) {
+
   var [qty, setQty] = useState(1);
-  var [varient, setVarient] = useState("small");
+  var [variant, setvariant] = useState("small");
   var [message, setMessage] = useState("");
+  const jwtToken = sessionStorage.getItem("jwtToken")
+  const config = getConfig(jwtToken)
+  const postData = {
+    "name" : pizza.name,
+    "quantity":qty,
+    "price":pizza.prices[0][variant],
+    "userName":sessionStorage.getItem("userName")
+  }
+  const url = createUrl("/addToCart")
+
+  useEffect(()=>{
+    if(message!=""){
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    }
+  },[message])
 
   var addQty = () => {
     setQty(qty + 1);
@@ -14,10 +34,17 @@ function PizzaRender({ pizza }) {
   };
 
   var addToCart = () => {
-    setMessage("Added to cart");
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
+    
+    axios.post(url,postData,config)
+    .then(res =>{
+      setMessage("Added to cart");
+    })
+    .catch(err=>{
+      console.log(err)
+      setMessage("Oops! Something went Wrong");
+    })
+
+    
   };
 
   return (
@@ -47,7 +74,7 @@ function PizzaRender({ pizza }) {
             <button onClick={addQty}>+</button>
           </div>
           <div>
-            <select onChange={(val) => setVarient(val.target.value)}>
+            <select onChange={(val) => setvariant(val.target.value)}>
               <option value="small">small</option>
               <option value="medium">medium</option>
               <option value="large">large</option>
@@ -62,7 +89,7 @@ function PizzaRender({ pizza }) {
             alignItems: "center",
           }}
         >
-          <h6>Rs.{qty * pizza.prices[0][varient]}</h6>
+          <h6>Rs.{qty * pizza.prices[0][variant]}</h6>
           <button onClick={addToCart} type="button" class="btn btn-primary">
             Add to cart
           </button>

@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from "react";
 import AllPizza from "./pizza-data";
 import PizzaRender from "./PizzaRender";
+import { createUrl } from "../utils/utils";
+import axios  from "axios";
 
 const Card = () => {
-  var [items, setItems] = useState([]);
-  var [qty, setQty] = useState(0);
+
+  const url = createUrl('/pizza')
+  const jwtToken = sessionStorage.getItem('jwtToken')
+  const config = {
+    headers:{
+      Authorization : jwtToken
+    }
+  }
+  const [pizzas , setPizzas] = useState([])
+
+  useEffect(()=>{
+  
+    axios.get(url,config)
+    .then(res =>{
+      setPizzas(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  },[])
 
   return (
     <>
-      {AllPizza.map((pizza) => {
+      {pizzas.map((pizza) => {
         return <PizzaRender pizza={pizza} />;
       })}
     </>
