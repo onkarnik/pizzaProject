@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./PizzaRender.css";
 
 function PizzaRender({ pizza }) {
   
@@ -23,11 +24,11 @@ function PizzaRender({ pizza }) {
 
   return (
     <div
-        className="card"
+        className="card enlarge-on-hover"
         style={{
           display: "inline-block",
           margin: 25,
-          boxShadow: "2px 2px 4px rgba(0, 0, 0, 1.2)",
+          boxShadow: "2px 2px 4px rgba(255, 0, 0, 0.6)",
           borderRadius: "10px",
           
       }}
