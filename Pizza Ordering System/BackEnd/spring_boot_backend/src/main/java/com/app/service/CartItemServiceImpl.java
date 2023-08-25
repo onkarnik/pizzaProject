@@ -42,34 +42,33 @@ public class CartItemServiceImpl implements CartItemService {
 	}
 
 	@Override
-	public List<CartItemDTO> getAllCartItems(String userId) {
+	public List<CartItem> getAllCartItems(String userId) {
 		
 		User user = userRepo.findById(userId).orElseThrow();
 		
 		List<CartItem> cartItems = cartItemRepo.findByUser(user);
 		
-		List<CartItemDTO> cartItemsDto = new ArrayList<CartItemDTO>();
 		
+//		List<CartItemDTO> cartItemsDto = new ArrayList<CartItemDTO>();
+//		cartItems.forEach((item)->{
+//			cartItemsDto.add(mapper.map(item, CartItemDTO.class));
+//		});
+//		cartItemsDto.forEach((item)->item.setUserName(userId));
 		
-		cartItems.forEach((item)->{
-			cartItemsDto.add(mapper.map(item, CartItemDTO.class));
-		});
-		
-		cartItemsDto.forEach((item)->item.setUserName(userId));
-		
-		return cartItemsDto;
+		return cartItems;
 	}
 
 	@Override
-	public String deleteCartItem(String pizzaName) {
+	public String deleteCartItem(Long CartItemId) {
 		
-		CartItem cartItem = cartItemRepo.findByName(pizzaName);
+		CartItem cartItem = cartItemRepo.findById(CartItemId).orElseThrow();
+		
 		
 		if(cartItem!=null) {
 			cartItemRepo.delete(cartItem);
-			return "Item deleted :"+pizzaName;
+			return "Item deleted :"+cartItem.getName();
 		}else {
-			return "Item not found :"+pizzaName;
+			return "Item not found :";
 		}
 			
 	}

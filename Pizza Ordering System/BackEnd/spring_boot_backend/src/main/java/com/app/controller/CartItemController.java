@@ -29,7 +29,7 @@ public class CartItemController {
 	
 	@PreAuthorize("hasRole('user')")
 	@GetMapping("/cartItem/{userId}")
-	public List<CartItemDTO> getAllCartItems(@PathVariable @Valid String userId ){
+	public List<CartItem> getAllCartItems(@PathVariable @Valid String userId ){
 	
 		//http://127.0.0.1:7070/cartItem/onkar123
 		
@@ -46,13 +46,13 @@ public class CartItemController {
 	}
 	
 	@PreAuthorize("hasRole('user')")
-	@DeleteMapping("deleteItem/{pizzaName}")
-	public String deleteCartItem(@PathVariable String pizzaName) {
+	@DeleteMapping("deleteItem/{cartItemId}")
+	public String deleteCartItem(@PathVariable Long cartItemId) {
 		
-		if(pizzaName==null) {
-			return "Item name cannot be null";
+		if(cartItemId==null) {
+			return "Item ID cannot be null";
 		}else {
-			return cartService.deleteCartItem(pizzaName);
+			return cartService.deleteCartItem(cartItemId);
 		}
 	}
 }

@@ -8,7 +8,7 @@ import com.app.entity.CartItem;
 public interface CartItemService {
 	CartItem addCartItem(CartItemDTO cartItemDto);
 	
-	List<CartItemDTO> getAllCartItems(String userId);
+	List<CartItem> getAllCartItems(String userId);
 	
-	String deleteCartItem(String pizzaName);
+	String deleteCartItem(Long cartItemId);
 }
