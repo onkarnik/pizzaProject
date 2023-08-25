@@ -16,15 +16,16 @@ function Controller() {
     <>
       <BrowserRouter>
         <Navbar/>
+        
         <Switch>
-          <div className="container" style={{textAlign:"center"}}>
           <Route exact path="/" component={DashBoard} />
           <ProtectedRoute exact path="/pizza" component={Card} />
           <ProtectedRoute exact path="/checkout" component={CheckoutForm} />
           <ProtectedRoute exact path="/cart" component={Cart} />
           <Route exact path="/login" component={Login} />
-          </div>
+          
         </Switch>
+        
       </BrowserRouter>
       <Footer />
     </>
