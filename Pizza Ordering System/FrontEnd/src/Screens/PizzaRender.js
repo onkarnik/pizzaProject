@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { createUrl, getConfig } from "../utils/utils";
-import "./PizzaRender.css";
+import "./styles/PizzaRender.css";
 
 function PizzaRender({ pizza }) {
 
@@ -56,7 +56,6 @@ function PizzaRender({ pizza }) {
           margin: 25,
           boxShadow: "2px 2px 4px rgba(255, 0, 0, 0.6)",
           borderRadius: "10px",
-          
       }}
      >
       <img
