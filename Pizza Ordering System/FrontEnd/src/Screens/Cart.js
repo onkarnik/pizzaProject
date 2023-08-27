@@ -30,8 +30,16 @@ function Cart() {
     totalPrice += totalQuant
   }
 
-  const RemoveItem = ()=>{
-    axios.delete()
+  const RemoveItem = (id)=>{
+    const urlDelete = createUrl('/deleteItem/'+id)
+    axios.delete(urlDelete,config)
+    .then(res=>{
+      loadCart()
+      console.log(id+" deleted")
+    })
+    .catch(err=>{
+      console.log(err)
+    })
   }
 
   return (
@@ -59,7 +67,9 @@ function Cart() {
                       <td>{cartItem.price}</td>
                       <td>{cartItem.quantity}</td>
                       <td>
-                        <button type="button" className="btn btn-danger btn-sm">
+                        <button type="button" className="btn btn-danger btn-sm" 
+                        onClick={()=>{RemoveItem(cartItem.id)}}
+                        >
                           Remove
                         </button>
                       </td>
