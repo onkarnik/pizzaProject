@@ -29,8 +29,8 @@ function Controller() {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/registerUser" component={RegisterUser}/>
           <Route exact path ="/RegisterUser" component={RegisterUser}/>
-         <Footer />
         </Switch>
+         <Footer />
       </BrowserRouter>
       
     </>
