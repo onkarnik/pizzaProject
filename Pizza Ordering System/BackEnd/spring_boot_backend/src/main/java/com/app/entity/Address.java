@@ -35,4 +35,7 @@ public class Address extends BaseEntity{
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	
+	
 }
