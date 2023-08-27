@@ -26,11 +26,10 @@ function Controller() {
           <ProtectedRoute exact path="/pizza" component={Card} />
           <ProtectedRoute exact path="/checkout" component={CheckoutForm} />
           <ProtectedRoute exact path="/cart" component={Cart} />
-          <Route exact path="/login" component={Login} 
-          <Route exact path="/registerUser" component={RegisterUser}/>
+          <Route exact path="/login" component={Login} />
           <Route exact path ="/RegisterUser" component={RegisterUser}/>
-        </Switch>
-         <Footer />
+         </Switch>
+        <Footer/>
       </BrowserRouter>
       
     </>
