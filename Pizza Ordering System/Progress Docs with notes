@@ -20,6 +20,14 @@ class instace 	=	row
 ->>ADMIN/USER FUNCTIONALITY				
 * register user
 
+	api(Post)=	http://127.0.0.1:7070/registerUser
+	object	=	{
+    			"userName":"xyz",
+    			"userFirstName":"xyz",
+    			"userLastName":"xyz",
+    			"userPassword":"xyz"
+			}
+
 ---------------------------------------------------------
 ->>ADMIN FUNCTIONALITY
 * pizza crud with role based auth

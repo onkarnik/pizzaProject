@@ -20,7 +20,7 @@ export function getConfig(jwtToken){
       "Authorization":jwtToken
     }
   }
-  console.log(config)
+  
 
   return config
 }
