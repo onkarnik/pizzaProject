@@ -10,7 +10,7 @@ import Card from "./Card";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
 import  RegisterUser from "./RegisterUser";
-import RegisterUserForm  from "./hello";
+
 import './styles/common.css'
 function Controller() {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn")
@@ -27,7 +27,7 @@ function Controller() {
           <ProtectedRoute exact path="/cart" component={Cart} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/registerUser" component={RegisterUser}/>
-          <Route exact path ="/RegisterUserForm" component={RegisterUserForm}/>
+          <Route exact path ="/RegisterUser" component={RegisterUser}/>
         </Switch>
          <Footer />
       </BrowserRouter>
