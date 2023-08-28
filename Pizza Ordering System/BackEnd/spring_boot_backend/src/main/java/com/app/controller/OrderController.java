@@ -18,40 +18,39 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.DTO.AddressDTO;
 import com.app.DTO.OrderDto;
 import com.app.entity.Address;
+import com.app.entity.Order;
 import com.app.service.AddressService;
+import com.app.service.OrderService;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class OrderController {
 	
 	@Autowired
-	private AddressService addressService;
+	private OrderService orderService;
 	
-//	@PreAuthorize("hasRole('user')")
-//	@GetMapping("/orders/{userId}")
-//	public List<Address> getOrders(@PathVariable @Valid String userId ){
-//	
-//		//http://127.0.0.1:7070/orders/onkar123
-//		
-//		return 
-//		
-//	}
+	@PreAuthorize("hasRole('user')")
+	@GetMapping("/orders/{userId}")
+	public List<Order> getOrders(@PathVariable @Valid String userId ){
+		//http://127.0.0.1:7070/orders/onkar123
+		return orderService.getAllOrders(userId);
+	}
 	
 	@PreAuthorize("hasRole('user')")
 	@PostMapping("/placeOrder")
-	public Address addOrder(@RequestBody @Valid OrderDto orderDto) {
+	public Order addOrder(@RequestBody @Valid OrderDto orderDto) {
 		
 		//http://127.0.0.1:7070/addNewAddress
 		
-		return addressService.addUserAddress(addressDto);
+		return orderService.addOrder(orderDto);
 	}
 	
-//	@PreAuthorize("hasRole('user')")
-//	@DeleteMapping("cancelOrder/{orderId}")
-//	public Address deleteOrder(@PathVariable @Min(1) Long orderId) {
-//		
-//		//http://127.0.0.1:7070/cancelOrder/1
-//		
-//		return ;
-//	}
+	@PreAuthorize("hasRole('user')")
+	@DeleteMapping("cancelOrder/{orderId}")
+	public Order deleteOrder(@PathVariable @Min(1) Long orderId) {
+		
+		//http://127.0.0.1:7070/cancelOrder/1
+		
+		return orderService.deleteOrder(orderId);
+	}
 }

@@ -2,6 +2,7 @@ package com.app.entity;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,7 +41,7 @@ public class Order extends BaseEntity{
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "order_cartItem")
-	private CartItem cartItem;
+	private List<CartItem> cartItem;
 }
