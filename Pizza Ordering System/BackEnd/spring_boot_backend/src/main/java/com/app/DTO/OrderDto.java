@@ -33,9 +33,10 @@ public class OrderDto {
 	@NotBlank
 	private Long addressId;
 	
-	@NotBlank
-	private List<Long> cartId;
+//	@NotBlank
+//	private List<Long> cartId;
 	
+	@NotBlank
 	private OrderStatus orderStatus;
 	
 }

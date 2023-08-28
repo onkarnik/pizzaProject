@@ -39,7 +39,7 @@ public class OrderController {
 	
 	@PreAuthorize("hasRole('user')")
 	@PostMapping("/placeOrder")
-	public Address addNewAddress(@RequestBody @Valid OrderDto orderDto) {
+	public Address addOrder(@RequestBody @Valid OrderDto orderDto) {
 		
 		//http://127.0.0.1:7070/addNewAddress
 		

@@ -33,6 +33,7 @@ public class Order extends BaseEntity{
 	private String userName;
 	
 	@OneToOne
+	@JoinColumn(name = "address_id")
 	private Address address;
 	
 	@Enumerated(EnumType.STRING)

@@ -24,6 +24,12 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private OrderRepo orderRepo;
+	
+	@Autowired
+	private AddressRepo addressRepo;
+	
+	@private C
+	
 	@Autowired
 	private ModelMapper mapper;
 	
@@ -38,6 +44,9 @@ public class OrderServiceImpl implements OrderService {
 	public Order addOrder(OrderDto orderDto) {
 		
 		Order order = mapper.map(orderDto, Order.class);
+		Address address = addressRepo.findById(orderDto.getAddressId()).orElseThrow();
+		order.setAddress(address);
+		
 	}
 
 	@Override
