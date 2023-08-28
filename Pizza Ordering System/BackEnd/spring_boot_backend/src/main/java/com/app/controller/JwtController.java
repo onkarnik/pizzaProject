@@ -11,7 +11,7 @@ import com.app.DTO.JwtResponse;
 import com.app.service.JwtService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class JwtController {
 
 	@Autowired
