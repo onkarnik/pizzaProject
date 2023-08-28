@@ -3,13 +3,13 @@ package com.app.entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +28,7 @@ public class User {
 
 	@Id
 	@NotBlank
+	@Column(unique = true)
 	private String userName;
 	
 	@NotBlank

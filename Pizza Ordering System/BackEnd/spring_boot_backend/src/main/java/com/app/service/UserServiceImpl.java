@@ -70,20 +70,20 @@ public class UserServiceImpl implements UserService {
 		userRepo.save(adminUser);
 		
 		//Creating user
-//		User user = new User();
-//		
-//		user.setUserFirstName("onkar");
-//		user.setUserLastName("nikam");
-//		user.setUserName("onkar123");
-//		user.setUserPassword(getEncodedPassword("onkar@123"));
-//		
-//		Set<Role> userRoles  = new HashSet<Role>();
-//		
-//		userRoles.add(userRole);
-//		
-//		user.setRoles(userRoles);
-//		
-//		userRepo.save(user);
+		User user = new User();
+		
+		user.setUserFirstName("onkar");
+		user.setUserLastName("nikam");
+		user.setUserName("onkar123");
+		user.setUserPassword(getEncodedPassword("onkar@123"));
+		
+		Set<Role> userRoles  = new HashSet<Role>();
+		
+		userRoles.add(userRole);
+		
+		user.setRoles(userRoles);
+		
+		userRepo.save(user);
 		
 	}
 	

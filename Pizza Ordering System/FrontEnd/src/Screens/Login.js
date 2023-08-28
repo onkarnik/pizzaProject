@@ -30,12 +30,12 @@ function Login(props) {
     axios
       .post(url, postData)
       .then((response) => {
+        console.log(response);
         sessionStorage.setItem("isLoggedIn", true);
         sessionStorage.setItem("userName", userName);
         sessionStorage.setItem("jwtToken", jwtToken + response.data.jwtToken);
         sessionStorage.setItem("role", response.data.user.roles[0].roleName);
         history.push("/");
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);

@@ -1,11 +1,9 @@
 package com.app.DTO;
 
-import java.util.List;
+
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-import com.app.entity.Price;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +28,7 @@ public class AddressDTO {
 	private String city;
 	
 	@NotBlank
-	private String State;
+	private String state;
 	
 	@NotBlank
 	private String userName;

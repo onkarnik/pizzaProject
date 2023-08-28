@@ -3,6 +3,7 @@ package com.app.controller;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,44 +15,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.DTO.CartItemDTO;
-import com.app.entity.CartItem;
-import com.app.service.CartItemService;
+import com.app.DTO.AddressDTO;
+import com.app.entity.Address;
+import com.app.service.AddressService;
 
 @RestController
-//@RequestMapping("/cart")
 @CrossOrigin(origins = "*")
-public class CartItemController {
+public class AddressController {
 	
 	@Autowired
-	private CartItemService cartService;
+	private AddressService addressService;
 	
 	@PreAuthorize("hasRole('user')")
-	@GetMapping("/cartItem/{userId}")
-	public List<CartItem> getAllCartItems(@PathVariable @Valid String userId ){
+	@GetMapping("/address/{userId}")
+	public List<Address> getUserAddress(@PathVariable @Valid String userId ){
 	
-		//http://127.0.0.1:7070/cartItem/onkar123
+		//http://127.0.0.1:7070/address/onkar123
 		
-		return cartService.getAllCartItems(userId);
+		return addressService.getUserAddress(userId);
+		
 	}
 	
 	@PreAuthorize("hasRole('user')")
-	@PostMapping("addToCart")
-	public CartItem addToCart(@RequestBody @Valid CartItemDTO cartItemDto) {
+	@PostMapping("/addNewAddress")
+	public Address addNewAddress(@RequestBody @Valid AddressDTO addressDto) {
 		
-		//http://127.0.0.1:7070/addToCart
+		//http://127.0.0.1:7070/addNewAddress
 		
-		return cartService.addCartItem(cartItemDto);
+		return addressService.addUserAddress(addressDto);
 	}
 	
 	@PreAuthorize("hasRole('user')")
-	@DeleteMapping("deleteItem/{cartItemId}")
-	public String deleteCartItem(@PathVariable Long cartItemId) {
+	@DeleteMapping("deleteAddress/{addressId}")
+	public Address deleteCartItem(@PathVariable @Min(1) Long addressId) {
 		
-		if(cartItemId==null) {
-			return "Item ID cannot be null";
-		}else {
-			return cartService.deleteCartItem(cartItemId);
-		}
+		//http://127.0.0.1:7070/deleteAddress/1
+		
+		return addressService.deleteAddress(addressId);
 	}
 }
