@@ -19,26 +19,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-//@Entity
-//@Table(name="user_order")
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@ToString
-//public class Order extends BaseEntity{
-//	
-//	private LocalDate orderDate;
-//	
-//	private String userId;
-//	
-//	@OneToOne
-//	private Address address;
-//	
-//	@Enumerated(EnumType.STRING)
-//	private OrderStatus orderStatus;
-//	
-//	@ManyToOne
-//	@JoinColumn(name = "order_cartItem")
-//	private CartItem cartItem;
-//}
+@Entity
+@Table(name="user_order")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class Order extends BaseEntity{
+	
+	private LocalDate orderDate;
+	
+	private String userName;
+	
+	@OneToOne
+	private Address address;
+	
+	@Enumerated(EnumType.STRING)
+	private OrderStatus orderStatus;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "order_cartItem")
+	private CartItem cartItem;
+}
