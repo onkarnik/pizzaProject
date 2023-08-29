@@ -63,7 +63,7 @@ function Login(props) {
             backdropFilter: "blur(30px)",
           }}
         >
-          <div className="card-body py-5 px-md-5">
+          <div className="card-body py-5 px-md-5" style={{marginTop:96}}>
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
                 <h2 className="fw-bold mb-5">Sign In now</h2>
