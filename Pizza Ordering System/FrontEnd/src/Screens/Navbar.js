@@ -2,11 +2,7 @@
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom"
 import Auth from "../utils/NavigateToFromLogin"
-
-
-function Navbar() {
-
-  
+function Navbar() {  
   const history = useHistory()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const {SignIn,SignOut} = Auth(setIsLoggedIn)

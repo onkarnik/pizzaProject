@@ -9,11 +9,13 @@ import Card from "./Card";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
 import RegisterUser from "./RegisterUser";
+import About from "./About";
 
 import "./styles/common.css";
 import address from "../Components/Address";
 function Controller() {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  //const isLoggedIn = sessionStorage.getItem("isLoggedIn")
 
   return (
     <>
@@ -27,6 +29,7 @@ function Controller() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/RegisterUser" component={RegisterUser} />
           <Route exact path="/checkout" component={address} />
+          <Route exact path="/About" component={About} />
         </Switch>
         <Footer />
       </BrowserRouter>
