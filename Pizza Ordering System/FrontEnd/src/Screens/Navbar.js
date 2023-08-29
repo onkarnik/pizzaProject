@@ -39,13 +39,13 @@ function Navbar() {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/pizza">
+                <a className="nav-link" aria-current="page" href="/pizza" style={{marginTop:13}}>
                   Order Now
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/cart">
-                  Your cart
+                <a className="nav-link" href="/cart" style={{marginTop:14, marginRight:4}}>
+                  Your Cart
                 </a>
               </li>
               <li className="nav-item">
