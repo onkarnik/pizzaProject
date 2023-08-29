@@ -7,7 +7,7 @@ import com.app.entity.Address;
 
 public interface AddressService {
 	
-	List<Address> getUserAddress(String userId);
+	List<AddressDTO> getUserAddress(String userId);
 	
 	Address addUserAddress(AddressDTO addressDto);
 	

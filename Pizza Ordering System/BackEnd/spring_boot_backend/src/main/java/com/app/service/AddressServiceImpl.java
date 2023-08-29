@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -37,12 +38,21 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public List<Address> getUserAddress(String userId) {
+	public List<AddressDTO> getUserAddress(String userId) {
 		
 		User user = userRepo.findById(userId).orElseThrow();
-		List<Address> findByUser = addressRepo.findByUser(user);
+		List<Address> addressList = addressRepo.findByUser(user);
+		List<AddressDTO> addressDto = new ArrayList<AddressDTO>();
 		
-		return findByUser;
+		addressList.forEach((address)->{
+			
+			AddressDTO map = mapper.map(address,AddressDTO.class);
+			map.setUserName(address.getUser().getUserName());
+			addressDto.add(map);
+		});
+		
+		
+		return addressDto;
 	}
 
 	@Override

@@ -18,6 +18,8 @@ import lombok.ToString;
 @ToString
 public class AddressDTO {
 	
+	private String Id;
+	
 	@NotBlank
 	private String addressLine1;
 	

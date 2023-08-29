@@ -28,12 +28,10 @@ public class AddressController {
 	
 	@PreAuthorize("hasRole('user')")
 	@GetMapping("/address/{userId}")
-	public List<Address> getUserAddress(@PathVariable @Valid String userId ){
-	
+	public List<AddressDTO> getUserAddress(@PathVariable @Valid String userId ){
+		
 		//http://127.0.0.1:7070/address/onkar123
-		
 		return addressService.getUserAddress(userId);
-		
 	}
 	
 	@PreAuthorize("hasRole('user')")
@@ -41,7 +39,6 @@ public class AddressController {
 	public Address addNewAddress(@RequestBody @Valid AddressDTO addressDto) {
 		
 		//http://127.0.0.1:7070/addNewAddress
-		
 		return addressService.addUserAddress(addressDto);
 	}
 	
@@ -53,4 +50,4 @@ public class AddressController {
 		
 		return addressService.deleteAddress(addressId);
 	}
-}
+}	
