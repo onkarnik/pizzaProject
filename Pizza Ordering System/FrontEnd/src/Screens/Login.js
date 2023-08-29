@@ -58,7 +58,7 @@ function Login(props) {
         <div
           className="card mx-4 mx-md-5 shadow-5-strong"
           style={{
-            marginTop: "-100px",
+            marginTop: "-27px",
             background: "hsla(9, 100%, 64%, 0.6)",
             backdropFilter: "blur(30px)",
           }}
@@ -106,12 +106,12 @@ function Login(props) {
                           <button onClick={SignIn} className="btn btn-primary">
                             Login
                           </button>
-                          <Link
-                            to="/registerUser"
-                            className="btn btn-secondary ml-2"
-                          >
-                            Sign Up
-                          </Link>
+                          <p className="text-center text-muted mt-5 mb-0">
+                       Don't have an account?{" "}
+                        <a href="/registerUser" className="fw-bold text-body">
+                          <u>Register here</u>
+                        </a>
+                      </p>
                           {message}
                         </td>
                       </tr>
