@@ -7,20 +7,20 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./styles/RegisterUser.css";
-//import "./styles/hello.css";
 import { createUrl } from "../utils/utils";
 import { useHistory } from "react-router-dom";
-// import '../utils/constants'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = "http://127.0.0.1:7070/registerUser";
+
 
 function RegisterUser() {
   const url = createUrl("/registerUser");
   const history = useHistory();
-  const token = localStorage.getItem("jwt");
+  
   const userRef = useRef();
   const errRef = useRef();
 
@@ -98,15 +98,48 @@ function RegisterUser() {
       setPwd("");
       if(response.status ==200)
       {
-        history.push("/login");
+        toast.success("👌Registration successful. Please log in.", {
+          position: "top-center",
+          autoClose: 5000, 
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme:"colored"
+        });
+        // history.push("/login");
       }
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("No Server Response");
+        toast.error("😲 No Server Response", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        toast.error("Username Taken", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
       } else {
-        setErrMsg("Registration Failed");
+        toast.error("Registration Failed", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
       }
       errRef.current.focus();
     }
@@ -114,14 +147,6 @@ function RegisterUser() {
 
   return (
     <>
-      {success ? (
-        <section>
-          <h1>Success!</h1>
-          <p>
-            <a href="/login">Sign In</a>
-          </p>
-        </section>
-      ) : (
         <section
           className="vh-100 bg-image"
           style={{
@@ -145,10 +170,11 @@ function RegisterUser() {
                       <h2 className="text-uppercase text-center mb-5">
                         Create an account
                       </h2>
+                      <center>
                       <form onSubmit={handleSubmit}>
-                        <div className="form-outline mb-4">
+                      <div className="form-outline mb-4">
                           <label htmlFor="username">
-                            User Name:
+                            UserName
                             <span className={validName ? "valid" : "hide"}>
                               <FontAwesomeIcon icon={faCheck} />
                             </span>
@@ -173,6 +199,7 @@ function RegisterUser() {
                             onFocus={() => setUserFocus(true)}
                             onBlur={() => setUserFocus(false)}
                           />
+                         
                           <p
                             id="uidnote"
                             className={
@@ -194,7 +221,7 @@ function RegisterUser() {
                             className="form-label"
                             htmlFor="form3Example3cg"
                           >
-                            First Name:
+                            FirstName
                           </label>
                           <input
                             type="text"
@@ -209,6 +236,7 @@ function RegisterUser() {
                             onFocus={() => setfirstNameFocus(true)}
                             onBlur={() => setfirstNameFocus(false)}
                           />
+                         
                           <p
                             id="uidnote"
                             className={
@@ -225,9 +253,10 @@ function RegisterUser() {
                             Letters, numbers, underscores, hyphens allowed.
                           </p>
                         </div>
+                        
                         <div className="form-outline mb-4">
-                          <label className="form-label" htmlFor="lastName">
-                            Last Name:
+                           <label className="form-label" htmlFor="lastName">
+                            LastName
                           </label>
                           <input
                             type="text"
@@ -242,6 +271,7 @@ function RegisterUser() {
                             onFocus={() => setlastNameFocus(true)}
                             onBlur={() => setlastNameFocus(false)}
                           />
+                          
                           <p
                             id="uidnote"
                             className={
@@ -263,7 +293,7 @@ function RegisterUser() {
                             className="form-label"
                             htmlFor="form3Example4cdg"
                           >
-                            Password:
+                            Password 
                           </label>
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -284,6 +314,7 @@ function RegisterUser() {
                             onFocus={() => setPwdFocus(true)}
                             onBlur={() => setPwdFocus(false)}
                           />
+                          
                           <p
                             id="pwdnote"
                             className={
@@ -306,7 +337,7 @@ function RegisterUser() {
                             <span aria-label="percent">%</span>
                           </p>
                         </div>
-                        {/* <div className="d-flex justify-content-center"> */}
+                        <div className="d-flex justify-content-center">
                         <button
                           type="submit"
                           className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
@@ -314,8 +345,10 @@ function RegisterUser() {
                         >
                           Register
                         </button>
-                        {/* </div> */}
+                        </div>
+                       
                       </form>
+                      </center>
                       <p className="text-center text-muted mt-5 mb-0">
                        already have an account?{" "}
                         <a href="/login" className="fw-bold text-body">
@@ -328,8 +361,9 @@ function RegisterUser() {
               </div>
             </div>
           </div>
+          <ToastContainer />
         </section>
-      )}
+      
     </>
   );
 }

@@ -1,22 +1,18 @@
-import Card from "./Card";
-import Cart from "./Cart";
+import { Link } from "react-router-dom";
 import './styles/Homepage.css'
 
-
-
 function DashBoard() {
+
   return (
-    <>
-      <div className="kenburns-top" body style={{ 
-        backgroundImage: "url('./Data/bg1.jpg')",
-        height:"100%", 
-        width:"100%"
-        }}>
-        <center style={{marginTop:"18px" , width:"100%" , height:"100%"}}>
-         <h1 className="tracking-in-contract-bck-bottom">HomePage</h1>
-        </center>
-      </div>
-    </>
+    <div className="home" style={{ backgroundImage: `url(./Data/pizza.jpeg)`,marginTop:-32 }}>
+    <div className="headerContainer">
+      <h1> Express Pizza</h1>
+      <p> PIZZA TO FIT ANY TASTE</p>
+      <Link to="/login">
+        <button> ORDER HERE </button>
+      </Link>
+    </div>
+  </div>
   );
 }
 
