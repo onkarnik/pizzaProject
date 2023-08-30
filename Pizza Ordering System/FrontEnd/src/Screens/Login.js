@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { createUrl } from "../utils/utils";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 function Login(props) {
   const [userName, setUserName] = useState("");
@@ -35,9 +36,10 @@ function Login(props) {
         sessionStorage.setItem("userName", userName);
         sessionStorage.setItem("jwtToken", jwtToken + response.data.jwtToken);
         sessionStorage.setItem("role", response.data.user.roles[0].roleName);
-        history.push("/");
+        history.push("/pizza");
       })
       .catch((error) => {
+        toast.error("Incorrect Credentials ! Please try again");
         console.log(error);
       });
   };
@@ -63,7 +65,7 @@ function Login(props) {
             backdropFilter: "blur(30px)",
           }}
         >
-          <div className="card-body py-5 px-md-5" style={{marginTop:96}}>
+          <div className="card-body py-5 px-md-5" style={{ marginTop: 96 }}>
             <div className="row d-flex justify-content-center">
               <div className="col-lg-8">
                 <h2 className="fw-bold mb-5">Sign In now</h2>
@@ -107,11 +109,14 @@ function Login(props) {
                             Login
                           </button>
                           <p className="text-center text-muted mt-5 mb-0">
-                       Don't have an account?{" "}
-                        <a href="/registerUser" className="fw-bold text-body">
-                          <u>Register here</u>
-                        </a>
-                      </p>
+                            Don't have an account?{" "}
+                            <a
+                              href="/registerUser"
+                              className="fw-bold text-body"
+                            >
+                              <u>Register here</u>
+                            </a>
+                          </p>
                           {message}
                         </td>
                       </tr>
@@ -121,6 +126,7 @@ function Login(props) {
               </div>
             </div>
           </div>
+          <ToastContainer />
         </div>
       </section>
     </>

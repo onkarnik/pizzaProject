@@ -4,27 +4,26 @@ import { createUrl, getConfig } from "../utils/utils";
 import "./styles/PizzaRender.css";
 
 function PizzaRender({ pizza }) {
-
   var [qty, setQty] = useState(1);
   var [variant, setvariant] = useState("small");
   var [message, setMessage] = useState("");
-  const jwtToken = sessionStorage.getItem("jwtToken")
-  const config = getConfig(jwtToken)
+  const jwtToken = sessionStorage.getItem("jwtToken");
+  const config = getConfig(jwtToken);
   const postData = {
-    "name" : pizza.name,
-    "quantity":qty,
-    "price":pizza.prices[0][variant],
-    "userName":sessionStorage.getItem("userName")
-  }
-  const url = createUrl("/addToCart")
+    name: pizza.name,
+    quantity: qty,
+    price: pizza.prices[0][variant],
+    userName: sessionStorage.getItem("userName"),
+  };
+  const url = createUrl("/addToCart");
 
-  useEffect(()=>{
-    if(message!=""){
+  useEffect(() => {
+    if (message != "") {
       setTimeout(() => {
         setMessage("");
       }, 3000);
     }
-  },[message])
+  }, [message]);
 
   var addQty = () => {
     setQty(qty + 1);
@@ -35,44 +34,48 @@ function PizzaRender({ pizza }) {
   };
 
   var addToCart = () => {
-    
-    axios.post(url,postData,config)
-    .then(res =>{
-      setMessage("Added to cart");
-    })
-    .catch(err=>{
-      console.log(err)
-      setMessage("Oops! Something went Wrong");
-    })
-
-    
+    axios
+      .post(url, postData, config)
+      .then((res) => {
+        setMessage("Added to cart");
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage("Oops! Something went Wrong");
+      });
   };
 
   return (
     <div
-        className="card enlarge-on-hover"
-        style={{
-          display: "inline-block",
-          margin: 25,
-          boxShadow: "2px 2px 4px rgba(255, 0, 0, 0.6)",
-          borderRadius: "10px",
+      className="card enlarge-on-hover"
+      style={{
+        display: "inline-block",
+        margin: 25,
+        boxShadow: "2px 2px 4px rgba(255, 0, 0, 0.6)",
+        borderRadius: "10px",
       }}
-     >
+    >
       <img
         src={pizza.image}
         className="card-img-top"
         alt="..."
-        style={{ height: 200,borderRadius: "10px"}}
+        style={{ height: 200, borderRadius: "10px" }}
       />
       <div className="card-body">
-        <h5 className="card-title" style={{color:"red"}}><strong>{pizza.name}</strong></h5>
-       
+        <h5 className="card-title" style={{ color: "red" }}>
+          <strong>{pizza.name}</strong>
+        </h5>
+
         <hr />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "block" }}>
-            <button onClick={subQty}><strong>-</strong></button>
+            <button onClick={subQty}>
+              <strong>-</strong>
+            </button>
             {qty}
-            <button onClick={addQty}><strong>+</strong></button>
+            <button onClick={addQty}>
+              <strong>+</strong>
+            </button>
           </div>
           <div>
             <select onChange={(val) => setvariant(val.target.value)}>
