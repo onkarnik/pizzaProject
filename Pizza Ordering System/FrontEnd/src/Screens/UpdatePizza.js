@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PizzaService from './PizzaService';
+import AddPizza from './AddPizza';
 
 export default class UpdatePizza extends Component {
     constructor(props){

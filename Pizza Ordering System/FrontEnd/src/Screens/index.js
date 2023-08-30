@@ -10,8 +10,11 @@ import Card from "./Card";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
 import  RegisterUser from "./RegisterUser";
+import AddPizza from "./AddPizza";
+import UpdatePizza from "./UpdatePizza";
 
 import './styles/common.css'
+import Admin from "./Admin";
 function Controller() {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn")
 
@@ -28,6 +31,8 @@ function Controller() {
           <ProtectedRoute exact path="/cart" component={Cart} />
           <Route exact path="/login" component={Login}/>
           <Route exact path ="/RegisterUser" component={RegisterUser}/>
+          <ProtectedRoute exact path="/admin-pizza" component={Admin} />
+          <ProtectedRoute exact path =  "/add-pizza" component={AddPizza}/>
          </Switch>
         <Footer/>
       </BrowserRouter>

@@ -53,6 +53,11 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/admin-pizza">
+                  Admin
+                </a>
+              </li>
+              <li className="nav-item">
               {isLoggedIn && ShowButton()}
               </li>
             </ul>

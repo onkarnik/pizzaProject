@@ -12,6 +12,7 @@ function Admin() {
           <Route path =  "/admin-pizza" component={PizzaList}></Route>
             <Route path =  "/add-pizza" component={AddPizza}></Route>
             <Route path =  "/update-pizza/:id" component={UpdatePizza}></Route>
+            <AddPizza/>
           </Switch>
           
         </div>
