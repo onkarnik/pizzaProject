@@ -29,7 +29,7 @@ public class PizzaDTO {
 	@NotBlank
     private String category;
 	
-	@NotBlank
+	
     private String image;
 	
 	@NotBlank
