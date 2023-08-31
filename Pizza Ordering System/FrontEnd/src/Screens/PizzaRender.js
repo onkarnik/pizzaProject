@@ -16,6 +16,7 @@ function PizzaRender({ pizza }) {
     userName: sessionStorage.getItem("userName"),
   };
   const url = createUrl("/addToCart");
+  const imgUrl = createUrl("/pizza/images/" + pizza.id);
 
   useEffect(() => {
     if (message != "") {
@@ -56,7 +57,8 @@ function PizzaRender({ pizza }) {
       }}
     >
       <img
-        src={pizza.image}
+        src={imgUrl}
+        // src="http://127.0.0.1:7070/pizza/images/14"
         className="card-img-top"
         alt="..."
         style={{ height: 200, borderRadius: "10px" }}

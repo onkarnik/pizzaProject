@@ -61,6 +61,18 @@ public class ImageHandlingServiceImpl implements ImageHandlingService {
 		return new ApiResponse("Image file uploaded successfully for emp id " + pizzaId);
 	}
 
+	public byte[] downloadImage(Long pizzaId) throws IOException {
+		// get emp by id
+		Pizza pizza = pizzaRepo.findById(pizzaId).get();
+		// emp found --> PERSISTENT
+		String path = pizza.getImage();
+		if (path != null) {
+			// path ---> File --> byte[]
+			return FileUtils.readFileToByteArray(new File(path));
+			//OR from DB : return emp.getImage();
+		} else
+			throw new RuntimeException("Image not yet assigned !!!!");
+	}
 
 
 }

@@ -1,6 +1,9 @@
 package com.app.service;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import com.app.DTO.PizzaDTO;
 import com.app.entity.Pizza;
+import com.app.entity.Price;
+import com.app.entity.Role;
+import com.app.entity.User;
 import com.app.repository.PizzaRepo;
 
 @Service
@@ -46,6 +52,41 @@ public class PizzaServiceImpl implements PizzaService {
 		Pizza pizza = pizzaRepo.findById(pizzaId).orElseThrow();
 		pizzaRepo.delete(pizza);
 		return pizza;
+	}
+
+	@Override
+	public void initRolesAndUser() {
+		
+		try
+		{
+			pizzaRepo.findByName("veg pizza unique");
+			System.out.println("default pizza exists");
+			
+		}catch(Exception e) {
+			System.out.println("Creating default pizza entry");
+			Pizza pizza = new Pizza();
+			Price price = new Price();
+			
+			price.setSmall(99.00);
+			price.setMedium(199.00);
+			price.setLarge(299.00);
+			
+			List<Price> list = new ArrayList<Price>();
+			list.add(price);
+			
+			
+			
+			pizza.setCategory("veg");
+			pizza.setDescription("yummy pizza loaded with vegetables and cheese");
+			pizza.setImage("images/some_pizza");
+			pizza.setName("veg pizza unique");
+			pizza.setPrices(list);
+			
+			pizzaRepo.save(pizza);
+		}
+		
+		
+		
 	}
 
 }

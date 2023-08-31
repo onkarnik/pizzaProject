@@ -12,5 +12,7 @@ public interface PizzaService {
 	Pizza addPizza(PizzaDTO pdto);
 	
 	Pizza deletePizza(Long pizzaId);
+	
+	void initRolesAndUser();
 
 }
