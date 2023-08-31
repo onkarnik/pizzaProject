@@ -8,4 +8,9 @@ import com.app.entity.Pizza;
 @Repository
 public interface PizzaRepo extends JpaRepository<Pizza, Long> {
 
+	Pizza findByName(String name);
+	
+	
 }
+
+

@@ -43,7 +43,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	{
 		httpSecurity.cors();
 		httpSecurity.csrf().disable()
-		.authorizeRequests().antMatchers("/authenticate","/registerUser").permitAll()
+		.authorizeRequests().antMatchers("/authenticate","/registerUser","/pizza/images/{pizzaId}").permitAll()
 		.antMatchers(HttpHeaders.ALLOW).permitAll()
 		.anyRequest().authenticated()
 		.and()

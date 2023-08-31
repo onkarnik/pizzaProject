@@ -51,4 +51,12 @@ public class Pizza extends BaseEntity {
     @Column(length = 255)
     private String description;
 
+	@Override
+	public String toString() {
+		return "Pizza [name=" + name + ", prices=" + prices + ", category=" + category + ", image=" + image
+				+ ", description=" + description + "]";
+	}
+    
+    
+
 }

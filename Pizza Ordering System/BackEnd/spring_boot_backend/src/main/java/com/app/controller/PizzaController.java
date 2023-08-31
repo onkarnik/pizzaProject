@@ -3,6 +3,7 @@ package com.app.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import com.app.DTO.PizzaDTO;
 import com.app.entity.Pizza;
 import com.app.service.ImageHandlingService;
 import com.app.service.PizzaService;
+import static org.springframework.http.MediaType.*;
 
 
 @RestController
@@ -68,5 +71,18 @@ public class PizzaController
 			throws IOException {
 		System.out.println("in upload img " + pizzaId);
 		return ResponseEntity.status(HttpStatus.CREATED).body(imgService.uploadImage(pizzaId, imageFile));
+	}
+	
+	@GetMapping(value="/images/{pizzaId}",produces = {IMAGE_GIF_VALUE,
+			IMAGE_JPEG_VALUE,IMAGE_PNG_VALUE})
+	public ResponseEntity<?> serveEmpImage(@PathVariable Long pizzaId) throws IOException {
+		System.out.println("in download img " + pizzaId);
+		return ResponseEntity.ok(imgService.downloadImage(pizzaId));
+	}
+	
+	@PostConstruct
+	public void initRolesAndUser()
+	{
+		pizzaService.initRolesAndUser();
 	}
 }
