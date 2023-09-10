@@ -15,7 +15,10 @@
 - Bootstrap 5
   - Card, Form, Toastify
 - GitHub
-**How to install**
+<br/>
+
+**_How to install_**
+
 - Clone project
 - For react(node moludes are not uploaded)
   > npm install
