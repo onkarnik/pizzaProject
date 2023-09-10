@@ -15,7 +15,13 @@
 - Bootstrap 5
   - Card, Form, Toastify
 - GitHub
-
+**How to install**
+- Clone project
+- For react(node moludes are not uploaded)
+  > npm install
+- For backend
+  - just use any spring boot supported ide. i have used sts4 eclipse
+  - used java 11
 ---
 
 ## USER FUNCTIONALITY
